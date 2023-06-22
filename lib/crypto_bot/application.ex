@@ -12,7 +12,7 @@ defmodule CryptoBot.Application do
       # Starts a worker by calling: CryptoBot.Worker.start_link(arg)
       # {CryptoBot.Worker, arg}
 	    ExGram,
-	    {CryptoBot.Bot, [method: :polling, token: "68" <> token]}
+	    {CryptoBot.Bot, [method: :polling, token: token]}
 	  ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
