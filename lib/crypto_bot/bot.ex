@@ -32,7 +32,7 @@ defmodule CryptoBot.Bot do
   def handle({:command, :tip, msg}, context) do
     {total, _ } = Integer.parse(msg.text)
     tip = total * 0.15
-    answer(context, "#{tip}")
+    answer(context, "GHS #{Float.parse(tip, 1)}")
   end
   
   def get_tokens do
