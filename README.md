@@ -1,6 +1,6 @@
 # CryptoBot
 
-**TODO: Add description**
+Simple app for bot.
 
 ## Installation
 
