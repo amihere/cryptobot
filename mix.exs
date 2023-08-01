@@ -1,9 +1,9 @@
-defmodule CryptoBot.MixProject do
+defmodule FoodBot.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :crypto_bot,
+      app: :food_bot,
       version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
@@ -15,7 +15,7 @@ defmodule CryptoBot.MixProject do
   def application do
     [
       extra_applications: [:logger, :eex],
-      mod: {CryptoBot.Application, []}
+      mod: {FoodBot.Application, []}
     ]
   end
 
