@@ -11,6 +11,7 @@ defmodule FoodBot.Bot do
   command("start")
   command("help", description: "Print the bot's help")
   command("random", description: "I want something to eat!")
+  command("experiment", description: "experiment")
 
   middleware(ExGram.Middleware.IgnoreUsername)
 
@@ -24,8 +25,17 @@ defmodule FoodBot.Bot do
     answer(context, "Here is your help: you can figure it out!!!")
   end
 
-  def handle({:command, :random, msg}, context) do
+  def handle({:command, :random, _msg}, context) do
     answer(context, "Waakye All Day!")
+  end
+
+  def handle({:command, :experiment, _msg}, context) do
+    IO.inspect(_msg)
+
+    case ExGram.send_message(_msg.chat.id, "Waakye Baby!") do
+      {:ok, msg} -> IO.inspect(msg)
+      {:error, err} -> IO.inspect(err)
+    end
   end
 
   def get_tokens do

@@ -7,7 +7,7 @@ defmodule FoodBot.Application do
 
   @impl true
   def start(_type, _args) do
-    token = Application.fetch_env!(:food_bot, :token)
+    token = Application.fetch_env!(:ex_gram, :token)
     children = [
       # Starts a worker by calling: CryptoBot.Worker.start_link(arg)
       # {CryptoBot.Worker, arg}
