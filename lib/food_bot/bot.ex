@@ -11,7 +11,7 @@ defmodule FoodBot.Bot do
   command("start")
   command("help", description: "Print the bot's help")
   command("random", description: "I want something to eat!")
-  command("experiment", description: "experiment")
+  # command("experiment", description: "experiment")
 
   middleware(ExGram.Middleware.IgnoreUsername)
 
@@ -26,17 +26,43 @@ defmodule FoodBot.Bot do
   end
 
   def handle({:command, :random, _msg}, context) do
-    answer(context, "Waakye All Day!")
+    foods = [
+      "Waakye",
+      "Jollof",
+      "Dokono",
+      "Banku",
+      "Boba",
+      "Fancy",
+      "Fufu Time",
+      "Attieke with Tilly",
+      "Ampesie",
+      "Angwa moo",
+      "Abolo",
+      "Omo Tuo",
+      "Tuo Zafi",
+      "Kokonte",
+      "Roasted Plantain",
+      "Red Red",
+      "Kebab",
+      "Kontomire with rice/plantain",
+      "Fonfom",
+      "Fried Rice",
+      "OMT (one man thousand)"
+    ]
+
+    answer(context, Enum.random(foods))
   end
 
-  def handle({:command, :experiment, _msg}, context) do
-    IO.inspect(_msg)
-
-    case ExGram.send_message(_msg.chat.id, "Waakye Baby!") do
-      {:ok, msg} -> IO.inspect(msg)
-      {:error, err} -> IO.inspect(err)
-    end
-  end
+  # def handle({:command, :experiment, _msg}, context) do
+  #   IO.inspect(context)
+  #
+  #   reply = %ExGram.Model.ReplyKeyboardMarkup{keyboard: [["goat"], ["chicken"], ["gob3"]]}
+  #
+  #   case ExGram.send_message(context.chat.id, "Waakye Baby!", reply_markup: reply) do
+  #     {:ok, msg} -> IO.inspect(msg)
+  #     {:error, err} -> IO.inspect(err)
+  #   end
+  # end
 
   def get_tokens do
     get("/simple/supported_vs_currencies")
