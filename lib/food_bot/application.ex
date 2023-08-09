@@ -12,7 +12,8 @@ defmodule FoodBot.Application do
       # Starts a worker by calling: CryptoBot.Worker.start_link(arg)
       # {CryptoBot.Worker, arg}
 	    ExGram,
-	    {FoodBot.Bot, [method: :polling, token: token]}
+	    {FoodBot.Bot, [method: :polling, token: token]},
+      FoodBot.FoodAgent
 	  ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
