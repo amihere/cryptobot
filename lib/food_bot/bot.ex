@@ -26,31 +26,9 @@ defmodule FoodBot.Bot do
   end
 
   def handle({:command, :random, _msg}, context) do
-    foods = [
-      "Waakye",
-      "Jollof",
-      "Dokono",
-      "Banku",
-      "Boba",
-      "Fancy",
-      "Fufu Time",
-      "Attieke with Tilly",
-      "Ampesie",
-      "Angwa moo",
-      "Abolo",
-      "Omo Tuo",
-      "Tuo Zafi",
-      "Kokonte",
-      "Roasted Plantain",
-      "Red Red",
-      "Kebab",
-      "Kontomire with rice/plantain",
-      "Fonfom",
-      "Fried Rice",
-      "OMT (one man thousand)"
-    ]
+    food = FoodBot.FoodAgent.get
 
-    answer(context, Enum.random(foods))
+    answer(context, food)
   end
 
   # def handle({:command, :experiment, _msg}, context) do
