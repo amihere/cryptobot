@@ -22,6 +22,7 @@ defmodule FoodBot.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:redix, "~> 1.1"},
       {:ex_gram, "~> 0.40.0"},
       {:tesla, "~> 1.2"},
       {:hackney, "~> 1.12"},
