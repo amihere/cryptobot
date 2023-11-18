@@ -15,6 +15,10 @@ defmodule FoodBot.RedixLoader do
     )
   end
 
+  def custom_blocking(command_list) do
+    GenServer.call(__MODULE__, {:custom, command_list})
+  end
+
   def custom(command_list) do
     GenServer.cast(__MODULE__, {:custom, command_list})
   end
@@ -32,6 +36,17 @@ defmodule FoodBot.RedixLoader do
   defp connect_redis(redis_url) do
     Logger.info("establish connextion to redix")
     Redix.start_link(redis_url, name: :redix)
+  end
+
+  @impl true
+  def handle_call({:custom, command_list}, _from, conn) do
+    case Redix.command(conn, command_list) do
+      {:ok, value} ->
+        {:reply, value, conn}
+
+      _ ->
+        {:reply, nil, conn}
+    end
   end
 
   @impl true

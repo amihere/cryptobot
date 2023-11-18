@@ -15,8 +15,6 @@ defmodule FoodBot.Bot do
 
   middleware(ExGram.Middleware.IgnoreUsername)
 
-  def bot(), do: @bot
-
   def handle({:command, :start, _msg}, context) do
     answer(context, "Welcome to the Food Decider!")
   end

@@ -9,14 +9,16 @@ defmodule FoodBot.Application do
   def start(_type, _args) do
     token = Application.fetch_env!(:ex_gram, :token)
     redis_url = Application.fetch_env!(:redix, :redis_url)
+    foods_redis_key = Application.fetch_env!(:redix, :foods_redis_key)
+
     children = [
       # Starts a worker by calling: CryptoBot.Worker.start_link(arg)
       # {CryptoBot.Worker, arg}
-	    ExGram,
-      FoodBot.FoodAgent,
-	    {FoodBot.Bot, [method: :polling, token: token]},
-	    {FoodBot.RedixLoader, redis_url}
-	  ]
+      ExGram,
+      {FoodBot.Bot, [method: :polling, token: token]},
+      {FoodBot.RedixLoader, redis_url},
+      {FoodBot.FoodAgent, [foods_redis_key]}
+    ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
